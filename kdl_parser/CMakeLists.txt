@@ -21,6 +21,7 @@ include_directories(${urdfdom_INCLUDE_DIRS})
 find_package(orocos_kdl REQUIRED)
 find_package(TinyXML REQUIRED)
 find_package(TinyXML2 REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 # check for rosconsole
 # We check additionally for catkin to distinguish between an "official" ROS distribution
@@ -52,7 +53,7 @@ endif()
 
 add_library(${PROJECT_NAME} SHARED src/kdl_parser.cpp)
 target_link_libraries(${PROJECT_NAME}
-  ${TinyXML_LIBRARIES} ${TinyXML2_LIBRARIES} ${orocos_kdl_LIBRARIES}
+  ${TinyXML_LIBRARIES} ${TinyXML2_LIBRARIES} ${orocos_kdl_LIBRARIES} Eigen3::Eigen
 )
 
 target_link_libraries(${PROJECT_NAME} ${urdfdom_LIBRARIES})
